@@ -38,24 +38,6 @@ export const NumberInputContainer = styled.div`
     padding: 0 0.25rem;
   }
 
-  input[type='button'] {
-    background: transparent;
-    border: transparent;
-    /* font-size: 2rem; */
-    display: flex;
-    flex: 1;
-    align-items: center;
-    justify-content: center;
-
-    /* padding: 8px; */
-
-    font-size: 1rem;
-
-    cursor: pointer;
-
-    color: ${({ theme }) => theme.purple};
-  }
-
   input::-webkit-outer-spin-button,
   input::-webkit-inner-spin-button {
     -webkit-appearance: none;
