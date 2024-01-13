@@ -5,8 +5,8 @@ export const CartContainer = styled.div`
   border-radius: 6px;
   background: ${({ theme }) => theme['yellow-light']};
 
-  max-height: 38px;
-  max-width: 38px;
+  max-height: 2.375rem;
+  max-width: 2.375rem;
 
   position: relative;
 

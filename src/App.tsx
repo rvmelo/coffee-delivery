@@ -3,6 +3,7 @@ import { defaultTheme } from './styles/themes/default'
 import { GlobalStyle } from './styles/global'
 import { NumberInput } from './components/numberInput'
 import { Cart } from './components/cart'
+import { ActionButton, CartButton, DeleteButton } from './components/buttons'
 
 export function App() {
   return (
@@ -13,6 +14,9 @@ export function App() {
         onDecrement={() => console.log('decrementing')}
       />
       <Cart amount={4} />
+      <ActionButton onClick={() => undefined} label="label" />
+      <DeleteButton onClick={() => undefined} />
+      <CartButton onClick={() => undefined} />
       <GlobalStyle />
     </ThemeProvider>
   )
