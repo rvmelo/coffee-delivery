@@ -6,6 +6,7 @@ import { Cart } from './components/cart'
 import { ActionButton, CartButton, DeleteButton } from './components/buttons'
 import { SelectionCard } from './components/selectionCard'
 import { CreditCard } from 'phosphor-react'
+import { Input } from './components/input'
 
 export function App() {
   return (
@@ -21,6 +22,7 @@ export function App() {
       <CartButton onClick={() => undefined} />
       <GlobalStyle />
       <SelectionCard icon={CreditCard} label="Cartão de crédito" />
+      <Input type="text" placeholder="Text" isOptional />
     </ThemeProvider>
   )
 }
