@@ -4,6 +4,8 @@ import { GlobalStyle } from './styles/global'
 import { NumberInput } from './components/numberInput'
 import { Cart } from './components/cart'
 import { ActionButton, CartButton, DeleteButton } from './components/buttons'
+import { SelectionCard } from './components/selectionCard'
+import { CreditCard } from 'phosphor-react'
 
 export function App() {
   return (
@@ -18,6 +20,7 @@ export function App() {
       <DeleteButton onClick={() => undefined} />
       <CartButton onClick={() => undefined} />
       <GlobalStyle />
+      <SelectionCard icon={CreditCard} label="Cartão de crédito" />
     </ThemeProvider>
   )
 }
