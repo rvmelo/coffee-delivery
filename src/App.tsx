@@ -7,8 +7,12 @@ import { ActionButton, CartButton, DeleteButton } from './components/buttons'
 import { SelectionCard } from './components/selectionCard'
 import { CreditCard } from 'phosphor-react'
 import { Input } from './components/input'
+import { CoffeeCard } from './components/coffeeCard'
+import { coffeeOptions } from './static/coffeeOptions'
 
 export function App() {
+  const { description, imageSrc, name, price } = coffeeOptions.express
+
   return (
     <ThemeProvider theme={defaultTheme}>
       <div>coffee-delivery</div>
@@ -23,6 +27,13 @@ export function App() {
       <GlobalStyle />
       <SelectionCard icon={CreditCard} label="Cartão de crédito" />
       <Input type="text" placeholder="Text" isOptional />
+      <CoffeeCard
+        description={description}
+        imageSrc={imageSrc}
+        name={name}
+        price={price}
+        type="tradicional"
+      />
     </ThemeProvider>
   )
 }
