@@ -9,6 +9,7 @@ import { CreditCard } from 'phosphor-react'
 import { Input } from './components/input'
 import { CoffeeCard } from './components/coffeeCard'
 import { coffeeOptions } from './static/coffeeOptions'
+import { CoffeeSmallCard } from './components/coffeeSmallCard'
 
 export function App() {
   const { description, imageSrc, name, price } = coffeeOptions.express
@@ -34,6 +35,7 @@ export function App() {
         price={price}
         type="tradicional"
       />
+      <CoffeeSmallCard imageSrc={imageSrc} name={name} price={price} />
     </ThemeProvider>
   )
 }

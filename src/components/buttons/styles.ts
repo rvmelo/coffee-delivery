@@ -46,6 +46,8 @@ export const DeleteButtonContainer = styled.div`
 
   > svg {
     color: ${({ theme }) => theme.purple};
+    height: 1rem;
+    width: 1rem;
   }
 
   &:hover {
