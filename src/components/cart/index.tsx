@@ -12,7 +12,7 @@ export const Cart: React.FC<CartProps> = ({ amount = 0 }) => {
 
   return (
     <CartContainer>
-      <ShoppingCart size={22} color={theme['yellow-dark']} weight="fill" />
+      <ShoppingCart size={18} color={theme['yellow-dark']} weight="fill" />
       {amount > 0 && (
         <div>
           <span>{amount}</span>
