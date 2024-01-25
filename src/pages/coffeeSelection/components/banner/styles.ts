@@ -16,6 +16,7 @@ export const BannerContainer = styled.div`
   flex-direction: row;
   align-items: center;
   gap: 3.5rem;
+  margin-top: 5.875rem;
 `
 
 export const BannerInfo = styled.div`
