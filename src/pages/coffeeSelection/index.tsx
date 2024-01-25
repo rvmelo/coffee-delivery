@@ -1,9 +1,11 @@
 import React from 'react'
+import { Banner } from './components/banner'
+import { SelectionContainer } from './styles'
 
 export const CoffeeSelection: React.FC = () => {
   return (
-    <div>
-      <span>coffee selection</span>
-    </div>
+    <SelectionContainer>
+      <Banner />
+    </SelectionContainer>
   )
 }
