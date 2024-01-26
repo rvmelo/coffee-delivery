@@ -1,12 +1,15 @@
 import styled from 'styled-components'
 
 export const CartContainer = styled.div`
-  padding: 8px;
   border-radius: 6px;
   background: ${({ theme }) => theme['yellow-light']};
 
-  max-height: 2.375rem;
-  max-width: 2.375rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 2.375rem;
+  width: 2.375rem;
 
   position: relative;
 
