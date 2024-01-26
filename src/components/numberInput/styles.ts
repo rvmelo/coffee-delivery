@@ -33,13 +33,17 @@ export const NumberInputContainer = styled.div`
     justify-content: center;
     border: transparent;
 
+    // centralize input number
+    text-align: center;
+
     -moz-appearance: textfield;
 
     padding: 0 0.25rem;
   }
 
-  input::-webkit-outer-spin-button,
-  input::-webkit-inner-spin-button {
+  // centralize input number
+  input[type='number']::-webkit-inner-spin-button,
+  input[type='number']::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
   }
