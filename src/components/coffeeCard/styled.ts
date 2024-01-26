@@ -11,7 +11,6 @@ export const CoffeeCardContainer = styled.div`
   align-items: center;
 
   max-width: 16rem;
-  height: 19.4rem;
 
   padding: 7rem 20px 20px;
 
@@ -24,7 +23,7 @@ export const CoffeeCardContainer = styled.div`
     top: -25px;
   }
 
-  .typeContainer {
+  .categoryContainer {
     background: ${({ theme }) => theme['yellow-light']};
     padding: 4px 8px;
     border-radius: 100px;
@@ -33,11 +32,17 @@ export const CoffeeCardContainer = styled.div`
     justify-content: center;
 
     margin-bottom: 1rem;
-
-    width: 5rem;
   }
 
-  .typeContainer span {
+  .categoriesWrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .categoryContainer span {
+    font-family: Roboto;
     font-weight: 700;
     font-size: 0.625rem;
     color: ${({ theme }) => theme.yellow};
@@ -52,6 +57,7 @@ export const CoffeeCardContainer = styled.div`
   }
 
   .coffeeDescriptionText {
+    font-family: Roboto;
     font-size: 0.875rem;
     line-height: 18.2px;
     text-align: center;

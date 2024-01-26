@@ -4,7 +4,7 @@ import { Cart } from '../cart'
 import { BottomContainer, CoffeeCardContainer } from './styled'
 
 interface CoffeeCardProps {
-  type: string
+  categories: string[]
   name: string
   description: string
   price: string
@@ -15,14 +15,18 @@ export const CoffeeCard: React.FC<CoffeeCardProps> = ({
   description,
   name,
   price,
-  type,
+  categories,
   imageSrc,
 }) => {
   return (
     <CoffeeCardContainer>
       <img src={imageSrc} alt="" />
-      <div className="typeContainer">
-        <span>{type}</span>
+      <div className="categoriesWrapper">
+        {categories.map((category, index) => (
+          <div key={index} className="categoryContainer">
+            <span>{category}</span>
+          </div>
+        ))}
       </div>
       <span className="coffeeNameText">{name}</span>
       <span className="coffeeDescriptionText">{description}</span>
