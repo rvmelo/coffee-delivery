@@ -4,6 +4,8 @@ export const CartContainer = styled.div`
   border-radius: 6px;
   background: ${({ theme }) => theme['yellow-light']};
 
+  cursor: pointer;
+
   display: flex;
   align-items: center;
   justify-content: center;

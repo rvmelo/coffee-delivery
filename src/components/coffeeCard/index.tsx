@@ -1,7 +1,7 @@
 import React from 'react'
 import { NumberInput } from '../numberInput'
-import { Cart } from '../cart'
 import { BottomContainer, CoffeeCardContainer } from './styled'
+import { CartButton } from '../buttons'
 
 interface CoffeeCardProps {
   categories: string[]
@@ -39,7 +39,7 @@ export const CoffeeCard: React.FC<CoffeeCardProps> = ({
             onIncrement={() => undefined}
             onDecrement={() => undefined}
           />
-          <Cart />
+          <CartButton onClick={() => undefined} />
         </div>
       </BottomContainer>
     </CoffeeCardContainer>

@@ -42,7 +42,7 @@ interface CartButtonProps {
 export const CartButton: React.FC<CartButtonProps> = ({ onClick }) => {
   return (
     <CartButtonContainer onClick={onClick}>
-      <ShoppingCartSimple size={22} />
+      <ShoppingCartSimple size={18} />
     </CartButtonContainer>
   )
 }
