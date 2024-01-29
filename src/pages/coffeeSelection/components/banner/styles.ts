@@ -40,7 +40,6 @@ export const BannerInfo = styled.div`
   }
 
   .bannerTextContainer .bannerInfoText {
-    font-family: Roboto;
     font-size: 1.25rem;
     font-weight: 400;
     line-height: 1.625rem;
@@ -78,7 +77,6 @@ export const FeatureItem = styled.div<FeatureItemProps>`
   }
 
   .featureText {
-    font-family: Roboto;
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.3rem;

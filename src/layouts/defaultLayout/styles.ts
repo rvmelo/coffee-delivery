@@ -41,6 +41,5 @@ export const LocationWrapper = styled.div`
     font-size: 0.875rem;
     font-weight: 400;
     color: ${({ theme }) => theme['purple-dark']};
-    font-family: 'Roboto';
   }
 `

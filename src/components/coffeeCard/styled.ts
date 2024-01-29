@@ -42,7 +42,6 @@ export const CoffeeCardContainer = styled.div`
   }
 
   .categoryContainer span {
-    font-family: Roboto;
     font-weight: 700;
     font-size: 0.625rem;
     color: ${({ theme }) => theme.yellow};
@@ -57,7 +56,6 @@ export const CoffeeCardContainer = styled.div`
   }
 
   .coffeeDescriptionText {
-    font-family: Roboto;
     font-size: 0.875rem;
     line-height: 18.2px;
     text-align: center;

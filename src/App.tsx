@@ -4,6 +4,8 @@ import { Router } from './router'
 import { BrowserRouter } from 'react-router-dom'
 import { PurchaseContextProvider } from './contexts/purchaseContext'
 
+import { GlobalStyle } from './styles/global'
+
 export function App() {
   return (
     <ThemeProvider theme={defaultTheme}>
@@ -12,6 +14,7 @@ export function App() {
           <Router />
         </PurchaseContextProvider>
       </BrowserRouter>
+      <GlobalStyle />
     </ThemeProvider>
   )
 }
