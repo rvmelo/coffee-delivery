@@ -5,6 +5,7 @@ export interface Coffee {
   id: string
   amount: number
   name: string
+  price: string
 }
 
 interface PurchaseState {
@@ -30,13 +31,15 @@ export function purchaseReducer(state: PurchaseState, action: ActionData) {
       // update coffee amount
       if (foundCoffeeIndex >= 0) {
         return produce(state, (draft) => {
-          draft.selectedCoffees[foundCoffeeIndex].amount++
+          draft.selectedCoffees[foundCoffeeIndex].amount = coffeePayload.amount
         })
       }
 
       // add new coffee
       return produce(state, (draft) => {
-        draft.selectedCoffees.push({ ...coffeePayload, amount: 0 })
+        draft.selectedCoffees.push({
+          ...coffeePayload,
+        })
       })
     }
 

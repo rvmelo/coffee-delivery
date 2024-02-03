@@ -4,7 +4,7 @@ import { addNewCoffee, removeCoffee } from '../reducers/purchase/action'
 
 interface PurchaseContextType {
   selectedCoffees: Coffee[]
-  createNewCoffee: (data: Omit<Coffee, 'id'>) => void
+  purchaseNewCoffee: (data: Omit<Coffee, 'id'>) => void
   deleteCoffee: (id: string) => void
 }
 
@@ -21,7 +21,7 @@ export const PurchaseContextProvider: React.FC<PurchaseProviderProps> = ({
     selectedCoffees: [],
   })
 
-  function createNewCoffee(data: Omit<Coffee, 'id'>) {
+  function purchaseNewCoffee(data: Omit<Coffee, 'id'>) {
     const id = String(new Date().getTime())
 
     const newCoffee = {
@@ -40,7 +40,7 @@ export const PurchaseContextProvider: React.FC<PurchaseProviderProps> = ({
     <purchaseContext.Provider
       value={{
         selectedCoffees,
-        createNewCoffee,
+        purchaseNewCoffee,
         deleteCoffee,
       }}
     >
