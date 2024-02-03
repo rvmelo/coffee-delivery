@@ -6,7 +6,8 @@ interface InputTextContainerProps {
 }
 
 export const InputTextContainer = styled.div<InputTextContainerProps>`
-  width: ${({ width }) => (width ? width / 16 : 27.125)}rem;
+  max-width: ${({ width }) => (width ? width / 16 : 27.125)}rem;
+  width: 100%;
   padding: 0.75rem;
   background: ${({ theme }) => theme['base-button']};
   border-radius: 5px;

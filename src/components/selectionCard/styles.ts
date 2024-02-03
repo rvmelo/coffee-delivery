@@ -21,6 +21,7 @@ export const SelectionCardContainer = styled.div<SelectionCardContainerProps>`
     `}
 
   max-width: 11.125rem;
+  width: 100%;
 
   span {
     font-size: 0.75rem;

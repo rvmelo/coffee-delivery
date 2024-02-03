@@ -1,9 +1,16 @@
 import React from 'react'
+import { PurchaseContainer, PurchaseFormContainer } from './styles'
+import { AddressForm } from './addressForm'
+import { Payment } from './payment'
 
 export const PurchaseForm: React.FC = () => {
   return (
-    <div>
-      <span>purchase form</span>
-    </div>
+    <PurchaseFormContainer>
+      <strong>Confirmar seu pedido</strong>
+      <PurchaseContainer>
+        <AddressForm />
+        <Payment />
+      </PurchaseContainer>
+    </PurchaseFormContainer>
   )
 }
