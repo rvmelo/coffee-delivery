@@ -20,8 +20,7 @@ export const SelectionCardContainer = styled.div<SelectionCardContainerProps>`
       border: 1px solid ${theme.purple};
     `}
 
-  max-width: 11.125rem;
-  width: 100%;
+  min-width: 11.125rem;
 
   span {
     font-size: 0.75rem;
