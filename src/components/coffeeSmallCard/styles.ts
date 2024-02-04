@@ -3,7 +3,9 @@ import styled from 'styled-components'
 export const CoffeeSmallCardContainer = styled.div`
   display: flex;
   flex-direction: row;
-  gap: 3.125rem;
+  align-items: flex-start;
+  /* gap: 3.125rem; */
+  justify-content: space-between;
   background: ${({ theme }) => theme['base-card']};
   padding: 8px 4px;
 `

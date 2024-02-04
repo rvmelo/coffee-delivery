@@ -4,14 +4,22 @@ import { Plus, Minus } from 'phosphor-react'
 
 interface NumberInputProps {
   inputRef: React.RefObject<HTMLInputElement>
+  initialValue?: number
+  handleChange?: (value: number) => void
 }
 
-export const NumberInput: React.FC<NumberInputProps> = ({ inputRef }) => {
-  const [inputNumber, setInputNumber] = useState(1)
+export const NumberInput: React.FC<NumberInputProps> = ({
+  inputRef,
+  initialValue = 1,
+  handleChange,
+}) => {
+  const [inputNumber, setInputNumber] = useState(initialValue)
 
   const onIncrement = () => {
     const newValue = inputNumber + 1
     setInputNumber(newValue)
+
+    handleChange?.(newValue)
   }
 
   const onDecrement = () => {
@@ -19,6 +27,7 @@ export const NumberInput: React.FC<NumberInputProps> = ({ inputRef }) => {
 
     if (newValue >= 1) {
       setInputNumber(newValue)
+      handleChange?.(newValue)
     }
   }
 

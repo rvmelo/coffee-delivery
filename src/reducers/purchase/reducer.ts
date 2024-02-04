@@ -47,7 +47,9 @@ export function purchaseReducer(state: PurchaseState, action: ActionData) {
       const { id } = (action.payload || {}) as { id: string }
 
       return produce(state, (draft) => {
-        draft.selectedCoffees.filter((coffee) => coffee.id !== id)
+        draft.selectedCoffees = draft.selectedCoffees.filter(
+          (coffee) => coffee.id !== id,
+        )
       })
     }
 
