@@ -9,12 +9,9 @@ import {
   RequestContainer,
 } from './styles'
 import { ActionButton } from '../../../components/buttons'
-import { useNavigate } from 'react-router-dom'
 
 export const Request: React.FC = () => {
   const { selectedCoffees } = useCoffee()
-
-  const navigate = useNavigate()
 
   const total = selectedCoffees.reduce((previousValue, currentValue) => {
     const { price } = currentValue || {}
@@ -27,10 +24,6 @@ export const Request: React.FC = () => {
   const formattedTotal = String(total.toFixed(2)).replace('.', ',')
 
   const totalWithDelivery = String((total + 3.5).toFixed(2)).replace('.', ',')
-
-  const onPurchase = () => {
-    navigate('/confirmRequest')
-  }
 
   return (
     <RequestContainer>
@@ -76,7 +69,7 @@ export const Request: React.FC = () => {
           <strong>R$ {totalWithDelivery}</strong>
         </PriceItem>
       </PriceContainer>
-      <ActionButton label="confirmar pedido" onClick={onPurchase} />
+      <ActionButton label="confirmar pedido" type="submit" />
     </RequestContainer>
   )
 }

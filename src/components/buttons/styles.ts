@@ -1,9 +1,11 @@
 import styled from 'styled-components'
 
-export const ActionButtonContainer = styled.div`
+export const ActionButtonContainer = styled.button`
   padding: 0.75rem 0.5rem;
   border-radius: 6px;
   background: ${({ theme }) => theme['yellow-dark']};
+
+  border: none;
 
   cursor: pointer;
 

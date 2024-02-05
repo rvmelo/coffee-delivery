@@ -6,17 +6,17 @@ import {
 } from './styles'
 import { ShoppingCartSimple, Trash } from 'phosphor-react'
 
-interface ActionButtonProps {
-  onClick: (data?: unknown) => void
+interface ActionButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   label: string
 }
 
 export const ActionButton: React.FC<ActionButtonProps> = ({
   label,
-  onClick,
+  ...rest
 }) => {
   return (
-    <ActionButtonContainer onClick={onClick}>
+    <ActionButtonContainer {...rest}>
       <span>{label}</span>
     </ActionButtonContainer>
   )
