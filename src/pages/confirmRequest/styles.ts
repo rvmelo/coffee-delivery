@@ -29,19 +29,31 @@ export const RequestStatusContainer = styled.div`
   }
 `
 
-export const AddressContainer = styled.div`
+export const AddressWrapper = styled.div`
   border-top-right-radius: 36px;
   border-bottom-left-radius: 36px;
 
   border-top-left-radius: 6px;
   border-bottom-right-radius: 6px;
 
-  margin-top: 2.5rem;
-
   border-color: transparent;
   background-origin: border-box;
   background-image: ${({ theme }) =>
     `linear-gradient(to bottom right, ${theme['yellow-dark']}, ${theme.purple})`};
+
+  overflow: hidden;
+
+  margin-top: 2.5rem;
+
+  padding: 1px;
+`
+
+export const AddressContainer = styled.div`
+  background: ${({ theme }) => theme.background};
+
+  border-radius: 6px 36px;
+
+  height: 100%;
 
   padding: 40px;
 
