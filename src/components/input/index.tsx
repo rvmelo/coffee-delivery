@@ -27,7 +27,7 @@ const InputComponent: React.FC<InputTextProps> = ({
   }
 
   return (
-    <InputTextContainer isActive={isActive} width={width}>
+    <InputTextContainer $isActive={isActive} width={width}>
       <input onFocus={handleFocus} onBlur={handleBlur} {...rest} />
       {isOptional && <span>Opcional</span>}
     </InputTextContainer>

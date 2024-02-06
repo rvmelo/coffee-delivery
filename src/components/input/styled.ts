@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components'
 
 interface InputTextContainerProps {
-  isActive: boolean
+  $isActive: boolean
   width?: number
 }
 
@@ -18,8 +18,8 @@ export const InputTextContainer = styled.div<InputTextContainerProps>`
   justify-content: space-between;
   gap: 4px;
 
-  ${({ isActive, theme }) =>
-    isActive &&
+  ${({ $isActive, theme }) =>
+    $isActive &&
     css`
       border: 1px solid ${theme.yellow};
     `}

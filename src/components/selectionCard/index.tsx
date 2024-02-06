@@ -18,7 +18,7 @@ export const SelectionCard: React.FC<SelectionCardProps> = ({
   const Icon = icon
 
   return (
-    <SelectionCardContainer isSelected={isSelected}>
+    <SelectionCardContainer $isSelected={isSelected}>
       <Icon size={16} />
       <span>{label}</span>
     </SelectionCardContainer>

@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components'
 
 interface SelectionCardContainerProps {
-  isSelected: boolean
+  $isSelected: boolean
 }
 
 export const SelectionCardContainer = styled.div<SelectionCardContainerProps>`
@@ -11,11 +11,11 @@ export const SelectionCardContainer = styled.div<SelectionCardContainerProps>`
   align-items: center;
   gap: 0.75rem;
   border-radius: 6px;
-  background: ${({ theme, isSelected }) =>
-    isSelected ? theme['purple-light'] : theme['base-button']};
+  background: ${({ theme, $isSelected }) =>
+    $isSelected ? theme['purple-light'] : theme['base-button']};
 
-  ${({ isSelected, theme }) =>
-    isSelected &&
+  ${({ $isSelected, theme }) =>
+    $isSelected &&
     css`
       border: 1px solid ${theme.purple};
     `}
