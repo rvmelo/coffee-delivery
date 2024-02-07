@@ -1,3 +1,4 @@
+import { coffeeOptions } from '../../static/coffeeOptions'
 import { ActionTypes } from './action'
 import { produce } from 'immer'
 
@@ -32,6 +33,21 @@ export function purchaseReducer(state: PurchaseState, action: ActionData) {
       if (foundCoffeeIndex >= 0) {
         return produce(state, (draft) => {
           draft.selectedCoffees[foundCoffeeIndex].amount = coffeePayload.amount
+
+          const foundCoffeeKey = Object.keys(coffeeOptions).find(
+            (key) =>
+              coffeeOptions[key as keyof typeof coffeeOptions].name ===
+              draft.selectedCoffees[foundCoffeeIndex].name,
+          ) as keyof typeof coffeeOptions
+
+          const price = coffeeOptions[foundCoffeeKey].price
+
+          const total =
+            Number(parseFloat(price.replace(',', '.')).toFixed(2)) *
+            coffeePayload.amount
+
+          const formattedTotal = String(total.toFixed(2)).replace('.', ',')
+          draft.selectedCoffees[foundCoffeeIndex].price = formattedTotal
         })
       }
 
