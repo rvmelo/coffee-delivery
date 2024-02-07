@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { PageSection, PurchaseContainer, PurchaseFormContainer } from './styles'
 import { AddressForm } from './addressForm'
 import { Payment } from './payment'
@@ -9,15 +9,12 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useNavigate } from 'react-router-dom'
 
 const addressValidationSchema = zod.object({
-  cep: zod
-    .number()
-    .min(8, 'Informe um cep válido')
-    .max(8, 'Informe um cep válido'),
+  cep: zod.number({ invalid_type_error: 'Informe o CEP' }).positive(),
   street: zod.string().min(3, 'Informe uma rua válida'),
   number: zod
-    .number()
-    .min(3, 'Informe um número válido')
-    .max(3, 'Informe um número válido'),
+    .number({ invalid_type_error: 'Informe o complemento' })
+    .positive(),
+
   complement: zod.string().optional(),
   neighborhood: zod.string().min(3, 'Informe um bairro válido'),
   city: zod.string().min(3, 'Informe uma cidade válida'),
@@ -35,17 +32,15 @@ export const PurchaseForm: React.FC = () => {
   const addressForm = useForm<AddressFormData>({
     resolver: zodResolver(addressValidationSchema),
     defaultValues: {
-      cep: 0,
       city: '',
       complement: '',
       neighborhood: '',
-      number: 0,
       street: '',
       uf: '',
     },
   })
 
-  const { handleSubmit, reset, watch } = addressForm
+  const { handleSubmit, reset } = addressForm
 
   function handlePayment(data: AddressFormData) {
     navigate('/confirmRequest', {
@@ -53,17 +48,6 @@ export const PurchaseForm: React.FC = () => {
     })
     reset()
   }
-
-  // function onError(data: any) {
-  //   console.log('errors: ', data)
-  // }
-
-  // useEffect(() => {
-  //   const subscription = watch((value, { name, type }) =>
-  //     console.log(value, name, type),
-  //   )
-  //   return () => subscription.unsubscribe()
-  // }, [watch])
 
   return (
     <form onSubmit={handleSubmit(handlePayment)}>
