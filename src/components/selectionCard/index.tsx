@@ -8,17 +8,19 @@ interface SelectionCardProps {
     IconProps & React.RefAttributes<SVGSVGElement>
   >
   isSelected?: boolean
+  onClick: () => void
 }
 
 export const SelectionCard: React.FC<SelectionCardProps> = ({
   icon,
   label,
   isSelected = false,
+  onClick,
 }) => {
   const Icon = icon
 
   return (
-    <SelectionCardContainer $isSelected={isSelected}>
+    <SelectionCardContainer onClick={onClick} $isSelected={isSelected}>
       <Icon size={16} />
       <span>{label}</span>
     </SelectionCardContainer>

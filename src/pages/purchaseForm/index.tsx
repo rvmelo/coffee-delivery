@@ -7,6 +7,7 @@ import * as zod from 'zod'
 import { FormProvider, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useNavigate } from 'react-router-dom'
+import { PaymentMethods } from '../../enums/paymentMethods'
 
 const addressValidationSchema = zod.object({
   cep: zod.number({ invalid_type_error: 'Informe o CEP' }).positive(),
@@ -22,9 +23,17 @@ const addressValidationSchema = zod.object({
     .string()
     .min(2, 'Informe uma uf válido')
     .max(2, 'Informe uma uf válido'),
+  paymentMethods: zod.enum(
+    [
+      PaymentMethods.CREDIT_CARD,
+      PaymentMethods.DEBIT_CARD,
+      PaymentMethods.CASH,
+    ],
+    { required_error: 'Escolha um método de pagamento' },
+  ),
 })
 
-type AddressFormData = zod.infer<typeof addressValidationSchema>
+export type AddressFormData = zod.infer<typeof addressValidationSchema>
 
 export const PurchaseForm: React.FC = () => {
   const navigate = useNavigate()
