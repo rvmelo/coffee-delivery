@@ -1,10 +1,5 @@
-import React, {
-  ForwardRefRenderFunction,
-  ReactElement,
-  forwardRef,
-  useState,
-} from 'react'
-import { InputTextContainer } from './styled'
+import React, { ElementRef, forwardRef, useState } from 'react'
+import { InputTextContainer } from './styles'
 
 interface InputTextProps extends React.InputHTMLAttributes<HTMLInputElement> {
   isOptional?: boolean
@@ -34,16 +29,11 @@ const InputComponent: React.FC<InputTextProps> = ({
   )
 }
 
-/* This way can react-hook-form can pass the ref
-property to the component. 
-According to this link: 
-https://app.rocketseat.com.br/h/forum/react-js/975a5274-72f4-4de5-a47d-25bcea71c407 */
-
-const CustomInput: ForwardRefRenderFunction<
-  HTMLInputElement,
+export const Input = forwardRef<
+  ElementRef<typeof InputComponent>,
   InputTextProps
-> = (props, ref): ReactElement => {
-  return <InputComponent {...props} ref={ref} />
-}
+>(({ ...rest }: InputTextProps, ref) => {
+  return <InputComponent {...rest} ref={ref} />
+})
 
-export const Input = forwardRef(CustomInput)
+Input.displayName = 'Input'
