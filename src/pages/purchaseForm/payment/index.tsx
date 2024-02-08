@@ -1,7 +1,12 @@
 import { Bank, CreditCard, CurrencyDollar, Money } from 'phosphor-react'
 import React, { useState } from 'react'
 import { SelectionCard } from '../../../components/selectionCard'
-import { InfoContainer, PaymentContainer, PaymentOptionWrapper } from './styles'
+import {
+  InfoContainer,
+  PaymentContainer,
+  PaymentOptionWrapper,
+  PaymentWrapper,
+} from './styles'
 import { useFormContext } from 'react-hook-form'
 import { PaymentMethods } from '../../../enums/paymentMethods'
 import { AddressFormData } from '..'
@@ -13,11 +18,16 @@ interface MethodsData {
 }
 
 export const Payment: React.FC = () => {
-  const { setValue } = useFormContext<AddressFormData>()
+  const {
+    setValue,
+    formState: { errors },
+    clearErrors,
+  } = useFormContext<AddressFormData>()
 
   const [activeMethods, setActiveMethods] = useState<MethodsData>()
 
   const handleButtonPress = (value: PaymentMethods) => {
+    clearErrors()
     setValue('paymentMethods', value)
     setActiveMethods({
       creditCard: value === PaymentMethods.CREDIT_CARD,
@@ -39,26 +49,31 @@ export const Payment: React.FC = () => {
           </span>
         </div>
       </InfoContainer>
-      <PaymentOptionWrapper>
-        <SelectionCard
-          onClick={() => handleButtonPress(PaymentMethods.CREDIT_CARD)}
-          label="Cartão de Crédito"
-          icon={CreditCard}
-          isSelected={creditCard}
-        />
-        <SelectionCard
-          onClick={() => handleButtonPress(PaymentMethods.DEBIT_CARD)}
-          label="Cartão de Débito"
-          icon={Bank}
-          isSelected={debitCard}
-        />
-        <SelectionCard
-          onClick={() => handleButtonPress(PaymentMethods.CASH)}
-          label="Dinheiro"
-          icon={Money}
-          isSelected={cash}
-        />
-      </PaymentOptionWrapper>
+      <PaymentWrapper>
+        <PaymentOptionWrapper>
+          <SelectionCard
+            onClick={() => handleButtonPress(PaymentMethods.CREDIT_CARD)}
+            label="Cartão de Crédito"
+            icon={CreditCard}
+            isSelected={creditCard}
+          />
+          <SelectionCard
+            onClick={() => handleButtonPress(PaymentMethods.DEBIT_CARD)}
+            label="Cartão de Débito"
+            icon={Bank}
+            isSelected={debitCard}
+          />
+          <SelectionCard
+            onClick={() => handleButtonPress(PaymentMethods.CASH)}
+            label="Dinheiro"
+            icon={Money}
+            isSelected={cash}
+          />
+        </PaymentOptionWrapper>
+        {errors.paymentMethods?.message && (
+          <span>{errors.paymentMethods?.message}</span>
+        )}
+      </PaymentWrapper>
     </PaymentContainer>
   )
 }

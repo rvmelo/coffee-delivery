@@ -1,13 +1,14 @@
 import React, { forwardRef, useState } from 'react'
-import { InputTextContainer } from './styles'
+import { ErrorText, InputContainer, InputWrapper } from './styles'
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   isOptional?: boolean
   width?: number
+  errorMessage?: string
 }
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({ isOptional = false, width, ...rest }: InputProps, ref) => {
+  ({ isOptional = false, width, errorMessage, ...rest }: InputProps, ref) => {
     const [isActive, setIsActive] = useState(false)
 
     const handleFocus = () => {
@@ -19,10 +20,18 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
     }
 
     return (
-      <InputTextContainer $isActive={isActive} width={width}>
-        <input ref={ref} onFocus={handleFocus} onBlur={handleBlur} {...rest} />
-        {isOptional && <span>Opcional</span>}
-      </InputTextContainer>
+      <InputWrapper width={width}>
+        <InputContainer $isActive={isActive}>
+          <input
+            ref={ref}
+            onBlurCapture={handleBlur}
+            onFocus={handleFocus}
+            {...rest}
+          />
+          {isOptional && <span>Opcional</span>}
+        </InputContainer>
+        {errorMessage && <ErrorText>{errorMessage}</ErrorText>}
+      </InputWrapper>
     )
   },
 )

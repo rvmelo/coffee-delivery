@@ -12,6 +12,10 @@ export const Header: React.FC = () => {
   const navigate = useNavigate()
 
   function handleNavigation() {
+    if (selectedCoffees.length <= 0) {
+      return alert('Escolha pelo menos um café')
+    }
+
     navigate('/purchaseForm')
   }
 

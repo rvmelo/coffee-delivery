@@ -1,12 +1,14 @@
 import styled, { css } from 'styled-components'
 
-interface InputTextContainerProps {
+interface InputContainerProps {
   $isActive: boolean
+}
+
+interface InputWrapperProps {
   width?: number
 }
 
-export const InputTextContainer = styled.div<InputTextContainerProps>`
-  max-width: ${({ width }) => (width ? width / 16 : 27.125)}rem;
+export const InputContainer = styled.div<InputContainerProps>`
   width: 100%;
   padding: 0.75rem;
   background: ${({ theme }) => theme['base-button']};
@@ -53,4 +55,18 @@ export const InputTextContainer = styled.div<InputTextContainerProps>`
     font-size: 0.875rem;
     font-weight: 400;
   }
+`
+
+export const ErrorText = styled.div`
+  font-size: 10px;
+  color: red;
+`
+
+export const InputWrapper = styled.div<InputWrapperProps>`
+  max-width: ${({ width }) => (width ? width / 16 : 27.125)}rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 4px;
 `

@@ -10,26 +10,28 @@ import { useNavigate } from 'react-router-dom'
 import { PaymentMethods } from '../../enums/paymentMethods'
 
 const addressValidationSchema = zod.object({
-  cep: zod.number({ invalid_type_error: 'Informe o CEP' }).positive(),
-  street: zod.string().min(3, 'Informe uma rua válida'),
-  number: zod
-    .number({ invalid_type_error: 'Informe o complemento' })
+  cep: zod
+    .number({
+      invalid_type_error: 'Informe o CEP',
+    })
     .positive(),
+  street: zod.string().min(3, 'Informe a rua'),
+  number: zod.number({ invalid_type_error: 'Informe o número' }).positive(),
 
   complement: zod.string().optional(),
-  neighborhood: zod.string().min(3, 'Informe um bairro válido'),
-  city: zod.string().min(3, 'Informe uma cidade válida'),
-  uf: zod
-    .string()
-    .min(2, 'Informe uma uf válido')
-    .max(2, 'Informe uma uf válido'),
+  neighborhood: zod.string().min(3, 'Informe o bairro'),
+  city: zod.string().min(3, 'Informe a cidade'),
+  uf: zod.string().min(2, 'Informe o uf ').max(2, 'Informe o uf'),
   paymentMethods: zod.enum(
     [
       PaymentMethods.CREDIT_CARD,
       PaymentMethods.DEBIT_CARD,
       PaymentMethods.CASH,
     ],
-    { required_error: 'Escolha um método de pagamento' },
+    {
+      invalid_type_error: 'Escolha um método de pagamento',
+      required_error: 'Escolha um método de pagamento',
+    },
   ),
 })
 

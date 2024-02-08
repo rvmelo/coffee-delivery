@@ -46,3 +46,14 @@ export const PaymentOptionWrapper = styled.div`
   flex-direction: row;
   gap: 0.75rem;
 `
+
+export const PaymentWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  > span {
+    font-size: 10px;
+    color: red;
+  }
+`
