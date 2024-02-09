@@ -15,7 +15,7 @@ interface PurchaseState {
 
 interface ActionData {
   type: ActionTypes
-  payload: { coffee: Coffee } | { id: string }
+  payload?: { coffee: Coffee } | { id: string }
 }
 
 export function purchaseReducer(state: PurchaseState, action: ActionData) {
@@ -66,6 +66,12 @@ export function purchaseReducer(state: PurchaseState, action: ActionData) {
         draft.selectedCoffees = draft.selectedCoffees.filter(
           (coffee) => coffee.id !== id,
         )
+      })
+    }
+
+    case ActionTypes.CLEAR_CART: {
+      return produce(state, (draft) => {
+        draft.selectedCoffees = []
       })
     }
 

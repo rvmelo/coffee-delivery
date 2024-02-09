@@ -8,6 +8,7 @@ import { FormProvider, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useNavigate } from 'react-router-dom'
 import { PaymentMethods } from '../../enums/paymentMethods'
+import { useCoffee } from '../../contexts/purchaseContext'
 
 const addressValidationSchema = zod.object({
   cep: zod
@@ -40,6 +41,8 @@ export type AddressFormData = zod.infer<typeof addressValidationSchema>
 export const PurchaseForm: React.FC = () => {
   const navigate = useNavigate()
 
+  const { deleteAllCoffees } = useCoffee()
+
   const addressForm = useForm<AddressFormData>({
     resolver: zodResolver(addressValidationSchema),
     defaultValues: {
@@ -55,6 +58,8 @@ export const PurchaseForm: React.FC = () => {
 
   function handlePayment(data: AddressFormData) {
     const paymentMethods = getValues('paymentMethods')
+
+    deleteAllCoffees()
 
     navigate('/confirmRequest', {
       state: { ...data, paymentMethods },
