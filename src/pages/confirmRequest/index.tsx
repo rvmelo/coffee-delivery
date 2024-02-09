@@ -13,9 +13,29 @@ import {
 } from './styles'
 import { useTheme } from 'styled-components'
 import confirmation from '../../assets/confirmation.svg'
+import { useLocation } from 'react-router-dom'
+import { PaymentMethods } from '../../enums/paymentMethods'
+
+interface NavigationProps {
+  number: number
+  street: string
+  neighborhood: string
+  city: string
+  state: string
+  paymentMethods: PaymentMethods
+}
+
+const paymentLabels = {
+  [PaymentMethods.CREDIT_CARD]: 'Cartão de Crédito',
+  [PaymentMethods.DEBIT_CARD]: 'Cartão de Débito',
+  [PaymentMethods.CASH]: 'Dinheiro',
+}
 
 export const ConfirmRequest: React.FC = () => {
   const theme = useTheme()
+
+  const { number, paymentMethods, street, city, state, neighborhood } =
+    useLocation().state as NavigationProps
 
   return (
     <ConfirmRequestContainer>
@@ -32,9 +52,14 @@ export const ConfirmRequest: React.FC = () => {
               </IconWrapper>
               <ItemTextWrapper>
                 <span>
-                  Entrega em <strong>Rua João Daniel Martinelli, 102</strong>
+                  Entrega em{' '}
+                  <strong>
+                    Rua {street}, {number}
+                  </strong>
                 </span>
-                <span>Farrapos - Porto Alegre, RS</span>
+                <span>
+                  {neighborhood} - {city}, {state}
+                </span>
               </ItemTextWrapper>
             </AddressItem>
             <AddressItem>
@@ -52,7 +77,7 @@ export const ConfirmRequest: React.FC = () => {
               </IconWrapper>
               <ItemTextWrapper>
                 <span>Pagamento na entrega</span>
-                <strong>Cartão de Crédito</strong>
+                <strong>{paymentLabels[paymentMethods]}</strong>
               </ItemTextWrapper>
             </AddressItem>
           </AddressContainer>

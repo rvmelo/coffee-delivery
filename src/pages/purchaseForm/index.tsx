@@ -51,11 +51,13 @@ export const PurchaseForm: React.FC = () => {
     },
   })
 
-  const { handleSubmit, reset } = addressForm
+  const { handleSubmit, getValues, reset } = addressForm
 
   function handlePayment(data: AddressFormData) {
+    const paymentMethods = getValues('paymentMethods')
+
     navigate('/confirmRequest', {
-      state: data,
+      state: { ...data, paymentMethods },
     })
     reset()
   }
