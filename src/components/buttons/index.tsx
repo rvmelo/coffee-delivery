@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {
   ActionButtonContainer,
   CartButtonContainer,
   DeleteButtonContainer,
 } from './styles'
-import { ShoppingCartSimple, Trash } from 'phosphor-react'
+import { Check, ShoppingCartSimple, Trash } from 'phosphor-react'
 
 interface ActionButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -40,9 +40,27 @@ interface CartButtonProps {
 }
 
 export const CartButton: React.FC<CartButtonProps> = ({ onClick }) => {
+  const [isDisabled, setIsDisabled] = useState(false)
+
+  const handleClick = () => {
+    setIsDisabled(true)
+    setTimeout(() => {
+      onClick()
+      setIsDisabled(false)
+    }, 1000)
+  }
+
   return (
-    <CartButtonContainer onClick={onClick}>
-      <ShoppingCartSimple size={18} />
+    <CartButtonContainer
+      disabled={isDisabled}
+      onClick={handleClick}
+      backgroundColor={isDisabled ? 'yellow-dark' : 'purple-dark'}
+    >
+      {isDisabled ? (
+        <Check weight="fill" size={18} />
+      ) : (
+        <ShoppingCartSimple size={18} />
+      )}
     </CartButtonContainer>
   )
 }

@@ -1,5 +1,9 @@
 import styled from 'styled-components'
 
+interface CartButtonContainerProps {
+  backgroundColor: 'purple-dark' | 'yellow-dark'
+}
+
 export const ActionButtonContainer = styled.button`
   padding: 0.75rem 0.5rem;
   border-radius: 6px;
@@ -61,7 +65,7 @@ export const DeleteButtonContainer = styled.div`
   }
 `
 
-export const CartButtonContainer = styled.div`
+export const CartButtonContainer = styled.button<CartButtonContainerProps>`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -72,10 +76,11 @@ export const CartButtonContainer = styled.div`
   padding: 0.5rem;
 
   border-radius: 6px;
+  border: none;
 
   cursor: pointer;
 
-  background: ${({ theme }) => theme['purple-dark']};
+  background: ${({ theme, backgroundColor }) => theme[backgroundColor]};
 
   > svg {
     color: ${({ theme }) => theme['base-card']};
